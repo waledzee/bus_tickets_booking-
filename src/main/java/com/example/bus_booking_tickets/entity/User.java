@@ -22,5 +22,7 @@ public class User {
     private String role; // ADMIN / PASSENGER
 
     private String number; // phone number
+
+
 }
 

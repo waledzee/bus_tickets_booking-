@@ -1,6 +1,7 @@
 package com.example.bus_booking_tickets.service;
 
 import com.example.bus_booking_tickets.entity.User;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.bus_booking_tickets.repository.UserRepository;
@@ -13,11 +14,18 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
     public User createUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        // تعيين role افتراضي لو مش موجود
+        if (user.getRole() == null) {
+            user.setRole("PASSENGER");
+        }
         return userRepository.save(user);
     }
 

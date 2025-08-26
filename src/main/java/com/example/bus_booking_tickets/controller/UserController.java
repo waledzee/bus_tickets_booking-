@@ -1,18 +1,18 @@
 package com.example.bus_booking_tickets.controller;
 
 import com.example.bus_booking_tickets.entity.User;
+import com.example.bus_booking_tickets.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.bus_booking_tickets.service.UserService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-    @Autowired
 
+    @Autowired
     private UserService userService;
 
     @GetMapping("/test")
@@ -52,4 +52,3 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 }
-

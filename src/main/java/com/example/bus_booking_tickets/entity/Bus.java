@@ -14,7 +14,15 @@ public class Bus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String number;   // e.g. "BUS-101"
+    @Enumerated(EnumType.STRING)
+    private BusStatus status = BusStatus.AVAILABLE;
+
+    @OneToOne(mappedBy = "bus")
+    private Trip trip;
+    private String number;
     private int capacity;
-    private String kind; // e.g. "AC", "Mini", "Luxury"
+    private String kind;
+
+
+
 }

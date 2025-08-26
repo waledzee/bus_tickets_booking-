@@ -28,6 +28,8 @@ public class Trip {
     private LocalDateTime arrivalTime;
 
     private double price;
+    @Enumerated(EnumType.STRING)
+    private TripStatus status = TripStatus.SCHEDULED;
 
     @ManyToOne
     @JoinColumn(name = "bus_id")
